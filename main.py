@@ -63,7 +63,7 @@ def add_server_time(server_url="https://dash.icehost.pl/server/63d1068d"):
                     return False
 
             # --- 核心操作：查找并点击 "시간 추가" 按钮 ---
-            add_button_selector = 'button:has-text("Dodaj 6 godzin ważności")' # 已更新为新的按钮文本
+            add_button_selector = 'button:has-text("ADD 6 HOURS VALIDIFY")' # 已更新为新的按钮文本
             print(f"正在查找并等待 '{add_button_selector}' 按钮...")
 
             try:
@@ -71,13 +71,13 @@ def add_server_time(server_url="https://dash.icehost.pl/server/63d1068d"):
                 add_button = page.locator(add_button_selector)
                 add_button.wait_for(state='visible', timeout=30000)
                 add_button.click()
-                print("成功点击 'DODAJ 6 GODZIN WAŻNOŚCI' 按钮。")
+                print("成功点击 'ADD 6 HOURS VALIDIF' 按钮。")
                 time.sleep(5) # 等待5秒，确保操作在服务器端生效
                 print("任务完成。")
                 browser.close()
                 return True
             except PlaywrightTimeoutError:
-                print(f"错误: 在30秒内未找到或 'DODAJ 6 GODZIN WAŻNOŚCI' 按钮不可见/不可点击。")
+                print(f"错误: 在30秒内未找到或 'ADD 6 HOURS VALIDIF' 按钮不可见/不可点击。")
                 page.screenshot(path="add_6h_button_not_found.png")
                 browser.close()
                 return False
